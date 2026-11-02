@@ -1,21 +1,20 @@
 abstract class SmartDevice {
-    boolean status = false;
-    public String getStatus(SmartDevice smartDevice) {
-        if (smartDevice.status = false) {
+    static boolean status = false;
+    public void getStatus(SmartDevice smartDevice) {
+        if (!status) {
             System.out.println("Устройство выключено");
         }
-        if (smartDevice.status = true) {
+        if (status) {
             System.out.println("Устройство включено");
         }
     }
 }
 class Lamp extends SmartDevice {
-    private final int maxBridhtness = 100;
-    private int currentBrightness = 50;
+    private final int maxBrightness = 100;
+    private static int currentBrightness = 50;
 
     public Lamp() {
         this.status = status;
-        this.maxBrightness = maxBrightness;
         this.currentBrightness = currentBrightness;
     }
 
@@ -29,15 +28,15 @@ class Lamp extends SmartDevice {
 }
 class Thermostat extends SmartDevice {
     private int targetTemperature = 20;
-    private int currentTemperature = 15;
-    private int heatingOrCooling = 2;
+    private static int currentTemperature = 15;
+    private static int heatingOrCooling = 2;
     public Thermostat() {
         this.status = status;
         this.targetTemperature = targetTemperature;
         this.currentTemperature = currentTemperature;
     }
     private static void setTargetTemperature(int newTargetTemperature) {
-        targetTemperature = newTargetTemperature;
+        int targetTemperature = newTargetTemperature;
         if (targetTemperature < currentTemperature) {
             heatingOrCooling = 2;
         }
@@ -50,11 +49,10 @@ class Thermostat extends SmartDevice {
     }
 }
 class Blinds extends SmartDevice {
-    private final int maxAngle = 180;
-    private int currentAngle = 90;
+    private static final int maxAngle = 180;
+    private static int currentAngle = 90;
     public Blinds() {
         this.status = status;
-        this.maxAngle = maxAngle;
         this.currentAngle = currentAngle;
     }
     private static void setOpen() {
